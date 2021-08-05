@@ -17,7 +17,11 @@ class UserRepo():
 
     def  read(self, user_name=None):
         """Read the database for users, or a specific user 
-            given a User object"""
+            given a User object.
+            1. If a user_name is given, all users with that name 
+                will be reuturned.
+            2. If a user_name is not given, will return all users in database.
+        """
 
         if user_name != None:
             return self.collection.find({"name": user_name})
@@ -28,6 +32,7 @@ class UserRepo():
     def update(self, user):
         """Updates a user in the database given a User object."""
         pass
+
     def delete(self, user):
         """Delete a user from the database given a User object."""
         pass
