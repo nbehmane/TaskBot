@@ -4,6 +4,7 @@ load_dotenv()
 
 class UserRepo():
     """The user repository to interface with MongoDB."""
+
     def __init__(self, mongo_url=None):
         """Initializes the interface to the MongoDB given a Mongo URL."""
         self.client = MongoClient(mongo_url)
