@@ -1,4 +1,7 @@
+
+
 def main():
+    """Where the discord code will go."""
     print('Woah, bro.')
 
 
