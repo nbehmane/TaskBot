@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 from dotenv import load_dotenv
-load_dotenv
+load_dotenv()
 
 class UserRepo():
     """The user repository to interface with MongoDB."""
@@ -10,9 +10,9 @@ class UserRepo():
         self.database = self.client['Users']
         self.collection = self.database['UserInformation']
     
-    def create(self, name, tasks):
+    def create(self, name, tasks=[]):
         """Create a User in the database given a user object."""
-        self.collection.insert_one({"name": name, "tasks": []})
+        self.collection.insert_one({"name": name, "tasks": tasks})
         return True
 
     def  read(self, user_name=None):
@@ -22,7 +22,6 @@ class UserRepo():
                 will be reuturned.
             2. If a user_name is not given, will return all users in database.
         """
-
         if user_name != None:
             return self.collection.find({"name": user_name})
         else:
@@ -40,10 +39,13 @@ class UserRepo():
 
 class User():
     """Someone that can be assigned chores/tasks."""
-    def __init__(self, bson_object, name=None, tasks=[]):
+    def __init__(self, bson_object):
         """Initialize a user."""
         self.name = bson_object["name"]
         self.tasks = bson_object["tasks"]
+    
+    def __repr__(self):
+        return str(self.__dict__)
     
 
 

@@ -16,10 +16,17 @@ def test_repo_read():
     user = repo.read(user_name="Nima")
     if user[0]["name"] == "Nima":
         print("{}".format(user[0]["name"]))
+
+def test_repo_make_user_object():
+    repo = UserRepo(mongo_url=config["MONGO_URL"])
+    user_from_database = repo.read(user_name="Nima")
+    user_object = User(user_from_database[0])
+    print(user_object)
     
 def main():
     test_test()
     test_repo_read()
+    test_repo_make_user_object()
 
 if __name__ == "__main__":
     main()
