@@ -3,7 +3,7 @@ from pymongo import MongoClient
 class UserRepo():
     """The user repository to interface with MongoDB."""
     def __init__(self, mongo_url):
-        """Initializes the interface to the MongoDB"""
+        """Initializes the interface to the MongoDB given a Mongo URL."""
         self.client = MongoClient(mongo_url)
         self.database = self.client['Users']
         self.collection = self.database['UserInformation']
