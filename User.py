@@ -27,7 +27,6 @@ class UserRepo():
             return self.collection.find({"name": user_name})
         else:
             return self.collection.find({})
-        
 
     def update(self, user):
         """Updates a user in the database given a User object."""
@@ -37,7 +36,6 @@ class UserRepo():
         """Delete a user from the database given a User object."""
         pass
     
-
 class User():
     """Someone that can be assigned chores/tasks."""
     def __init__(self, bson_object):
