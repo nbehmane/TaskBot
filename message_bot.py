@@ -1,7 +1,7 @@
 import discord
 import People
 import Storage
-
+from .env import TOKEN
 
 chores = []
 
@@ -76,4 +76,4 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run('Lol what key')
+client.run(TOKEN)
