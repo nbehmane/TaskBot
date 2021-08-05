@@ -76,4 +76,4 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run('NzM2MTAzNjIzNjQ1MzMxNTA2.Xxp77A.LZ0GCIgsV4-VmautX70fSvMnwgA')
+client.run('Lol what key')
