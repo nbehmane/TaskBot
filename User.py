@@ -9,15 +9,22 @@ class UserRepo():
         self.client = MongoClient(mongo_url)
         self.database = self.client['Users']
         self.collection = self.database['UserInformation']
-        return True
     
-    def create(self, user):
+    def create(self, name, tasks):
         """Create a User in the database given a user object."""
-        pass
-    def  read(self, user=None):
+        self.collection.insert_one({"name": name, "tasks": []})
+        return True
+
+    def  read(self, user_name=None):
         """Read the database for users, or a specific user 
             given a User object"""
-        pass
+
+        if user_name != None:
+            return self.collection.find({"name": user_name})
+        else:
+            return self.collection.find({})
+        
+
     def update(self, user):
         """Updates a user in the database given a User object."""
         pass
@@ -28,10 +35,11 @@ class UserRepo():
 
 class User():
     """Someone that can be assigned chores/tasks."""
-    def __init__(name=None, tasks=[]):
+    def __init__(self, bson_object, name=None, tasks=[]):
         """Initialize a user."""
-        self.name = name
-        self.tasks = tasks
+        self.name = bson_object["name"]
+        self.tasks = bson_object["tasks"]
+    
 
 
     
